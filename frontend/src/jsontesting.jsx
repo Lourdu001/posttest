@@ -8,9 +8,9 @@ function Json() {
     city: ''
   });
 const [jsonData, setJsonData] = useState([]);
-
+ const BASE_URL = 'https://postbackendservertest.onrender.com';
   useEffect(() => {
-    axios.get('http://localhost:3001/api/get-json')
+    axios.get(`${BASE_URL}/api/get-json`)
       .then((response) => {
         setJsonData(response.data);
       })
@@ -25,7 +25,7 @@ const [jsonData, setJsonData] = useState([]);
 
   const sendJSON = async () => {
     try {
-      const res = await axios.post('http://localhost:3001/api/save-json', formData);
+      const res = await axios.post(`${BASE_URL}/api/save-json`, formData);
       alert('JSON stored successfully!');
       console.log(res.data);
     } catch (err) {
